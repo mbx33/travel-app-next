@@ -16,18 +16,21 @@ export default async function getPois(req, res) {
 	console.log(geoData);
 	const { latitude, longitude } = geoData.data[0];
 
-	await amadeus.referenceData.locations.pointsOfInterest
-		.get({
-			latitude,
-			longitude,
-		})
-		.then((response) => {
-			// console.log(response.data);
-			res.status(200).send(response.data);
-		})
-		.catch((responseError) => {
-			console.log(responseError.code, responseError);
-		});
+	console.log(latitude, longitude);
+
+	// comment back in when ready to make requests to the api
+	// await amadeus.referenceData.locations.pointsOfInterest
+	// 	.get({
+	// 		latitude,
+	// 		longitude,
+	// 	})
+	// 	.then((response) => {
+	// 		// console.log(response.data);
+	// 		res.status(200).send(response.data);
+	// 	})
+	// 	.catch((responseError) => {
+	// 		console.log(responseError.code, responseError);
+	// 	});
 }
 
 //Cities available in the test API

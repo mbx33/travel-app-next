@@ -8,6 +8,8 @@ let amadeus = new Amadeus({
 });
 
 export default async function getFlights(req, res) {
+	const { origin, destination, departureDate, returnDate } = req.body;
+	console.log(origin, destination, departureDate, pax, 'off the req.body');
 	await amadeus.shopping.flightOffersSearch
 		.get({
 			originLocationCode: 'SLC',
@@ -17,7 +19,7 @@ export default async function getFlights(req, res) {
 			max: 3,
 		})
 		.then((response) => {
-			res.status(200).send(response.data);
+			res.status(200).json(response.data);
 		})
 		.catch((responseError) => {
 			console.log(responseError.code, responseError);
