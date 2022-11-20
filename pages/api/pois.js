@@ -16,17 +16,28 @@ export default async function getPois(req, res) {
 	console.log(geoData);
 	const { latitude, longitude } = geoData.data[0];
 
-	// await amadeus.referenceData.locations.pointsOfInterest
-	// 	.get({
-	// 		latitude,
-	// 		longitude,
-	// 		category: 'RESTAURANT',
-	// 	})
-	// 	.then((response) => {
-	// 		// console.log(response.data);
-	// 		res.status(200).send(response.data);
-	// 	})
-	// 	.catch((responseError) => {
-	// 		console.log(responseError.code, responseError);
-	// 	});
+	await amadeus.referenceData.locations.pointsOfInterest
+		.get({
+			latitude,
+			longitude,
+		})
+		.then((response) => {
+			// console.log(response.data);
+			res.status(200).send(response.data);
+		})
+		.catch((responseError) => {
+			console.log(responseError.code, responseError);
+		});
 }
+
+//Cities available in the test API
+// const cities = [
+// 	{ city: 'Bangalore', country: 'India' },
+// 	{ city: 'Barcelona', country: 'Spain' },
+// 	{ city: 'Berlin', country: 'Germany' },
+// 	{ city: 'Dallas', country: 'USA' },
+// 	{ city: 'London', country: 'United Kingdom' },
+// 	{ city: 'New York', country: 'USA' },
+// 	{ city: 'Paris', country: 'France' },
+// 	{ city: 'San Francisco', country: 'USA' },
+// ]

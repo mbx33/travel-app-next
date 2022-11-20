@@ -3,18 +3,10 @@ import { useState } from 'react';
 import Image from 'next/image';
 import styles from '../styles/Home.module.css';
 
-// export async function getServerSideProps(context) {
-// 	const response = await fetch('http://localhost:3000/api/flights');
-// 	const data = await response.json();
-
-// 	return {
-// 		props: { data }, // will be passed to the page component as props
-// 	};
-// }
-
 export default function Home() {
 	const [city, setCity] = useState('');
 	const [country, setCountry] = useState('');
+	const [sites, setSites] = useState([]);
 
 	const handleSubmit = (e) => {
 		e.preventDefault();
@@ -26,9 +18,12 @@ export default function Home() {
 			body: JSON.stringify({ city, country }),
 		})
 			.then((res) => res.json())
-			.then((data) => console.log(data));
+			.then((data) => {
+				setSites(data);
+			});
 	};
 
+	console.log(sites);
 	return (
 		<div className={styles.container}>
 			<Head>
@@ -56,6 +51,16 @@ export default function Home() {
 				/>
 				<button>Search</button>
 			</form>
+			<div className={styles.grid}>
+				{sites &&
+					sites.map((site) => (
+						<div key={site.id} className={styles.card}>
+							<h3>{site.name}</h3>
+							<p>{site.category}</p>
+							<p>{site.rank}</p>
+						</div>
+					))}
+			</div>
 		</div>
 	);
 }
