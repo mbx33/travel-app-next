@@ -13,7 +13,9 @@ export default function Home() {
 				<link rel="icon" href="/favicon.ico" />
 			</Head>
 			<Navbar />
-			<h1>Home Page</h1>
+			<h1>Making a travel site with Amadeus</h1>
+
+			<h2>Home Page</h2>
 		</div>
 	);
 }

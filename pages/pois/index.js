@@ -32,7 +32,6 @@ const PointsOfInterestPage = () => {
 			</Head>
 			<Navbar />
 
-			<h1>Making a travel site with Amadeus</h1>
 			<h3>
 				Find Interesting Spots in: {city}, {country}
 			</h3>

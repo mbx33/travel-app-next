@@ -3,6 +3,7 @@
 	justify-content: space-between;
 	background: #222;
 	width: 100%;
+	padding: 0 1rem;
 }
 
 .navbar .logo {
@@ -12,6 +13,20 @@
 	letter-spacing: 1px;
 	text-decoration: none;
 	margin-left: 1rem;
+}
+
+.navlinks {
+	display: flex;
+	align-items: center;
+	gap: 3rem;
+}
+
+.navlinks li {
+	list-style: none;
+}
+
+.navlinks li:hover {
+	text-decoration: underline;
 }
 
 .navbar .menu {

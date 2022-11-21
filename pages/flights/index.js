@@ -1,4 +1,5 @@
 import { useState } from 'react';
+import axios from 'axios';
 
 import styles from '../../styles/Flights.module.css';
 import Navbar from '../../components/navbar/Navbar';
@@ -7,23 +8,27 @@ const FlightPage = () => {
 	const [origin, setOrigin] = useState('');
 	const [destination, setDestination] = useState('');
 	const [departureDate, setDepartureDate] = useState('');
-	const [pax, setPax] = useState('');
+	const [pax, setPax] = useState(0);
 	const [flights, setFlights] = useState([]);
 
-	const handleSubmit = (e) => {
+	const reset = () => {
+		setOrigin('');
+		setDestination('');
+		setDepartureDate('');
+		setPax(0);
+	};
+
+	const handleSubmit = async (e) => {
 		e.preventDefault();
-		fetch('http://localhost:3000/api/flights', {
-			method: 'POST',
-			headers: {
-				'Content-Type': 'application/json',
-			},
-			body: JSON.stringify({ origin, destination, departureDate, pax }),
-		})
-			.then((res) => res.json())
-			.then((data) => {
-				console.log(data, 'data');
-				// setFlights(data);
-			});
+		const response = await axios.post('/api/flights', {
+			origin,
+			destination,
+			departureDate,
+			pax,
+		});
+		reset();
+		console.log(response.data);
+		// setFlights(response.data);
 	};
 
 	return (
