@@ -3,6 +3,7 @@ import axios from 'axios';
 
 import styles from '../../styles/Flights.module.css';
 import Navbar from '../../components/navbar/Navbar';
+import FlightCard from '../../components/flightCard/FlightCard';
 
 const FlightPage = () => {
 	const [origin, setOrigin] = useState('');
@@ -75,6 +76,7 @@ const FlightPage = () => {
 					<button type="submit">Search</button>
 				</form>
 			</div>
+			{flights && flights.length > 0 && <FlightCard flights={flights} />}
 		</div>
 	);
 };
