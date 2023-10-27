@@ -29,7 +29,7 @@ const FlightPage = () => {
 		});
 		reset();
 		console.log(response.data);
-		// setFlights(response.data);
+		setFlights(response.data);
 	};
 
 	return (

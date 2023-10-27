@@ -7,7 +7,6 @@ let amadeus = new Amadeus({
 
 export default async function getFlights(req, res) {
 	const { origin, destination, departureDate, pax } = req.body;
-	console.log(origin, destination, departureDate, pax, 'off the req.body');
 	const results = await amadeus.shopping.flightOffersSearch.get({
 		originLocationCode: origin,
 		destinationLocationCode: destination,
@@ -15,6 +14,5 @@ export default async function getFlights(req, res) {
 		adults: pax,
 	});
 
-	console.log(results.data, 'results.data');
 	res.status(200).send(results.data);
 }

@@ -13,7 +13,7 @@ export default async function getPois(req, res) {
 		`http://api.positionstack.com/v1/forward?access_key=${token}&query=${city},${country}`
 	);
 	const geoData = await geoPosition.json();
-	console.log(geoData);
+	// console.log(geoData);
 	const { latitude, longitude } = geoData.data[0];
 
 	console.log(latitude, longitude);
